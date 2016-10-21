@@ -9,11 +9,11 @@ class GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new
+    @game = current_user.games.build
   end
 
   def create
-    @game = Game.new(game_params)
+    @game = current_user.games.build(game_params)
 
     if @game.save
       flash[:notice] = 'Game added successfully!'
