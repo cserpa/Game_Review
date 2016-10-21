@@ -1,4 +1,5 @@
-<%= simple_form_for @game do |f| %>
+<%= simple_form_for @game, html: { multipart: true } do |f| %>
+  <%= select_tag(:platform_id, options_for_select(@platforms), prompt: "Select a Platform") %>
   <%= f.input :title, label: "Game Title" %>
   <%= f.input :developer %>
   <%= f.input :description %>

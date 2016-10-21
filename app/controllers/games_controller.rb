@@ -10,10 +10,12 @@ class GamesController < ApplicationController
 
   def new
     @game = current_user.games.build
+    @platforms = Platform.all.map{ |p| [p.name, p.id] }
   end
 
   def create
     @game = current_user.games.build(game_params)
+    @game.platform_id = params[:platform_id]
 
     if @game.save
       flash[:notice] = 'Game added successfully!'
@@ -25,9 +27,11 @@ class GamesController < ApplicationController
   end
 
   def edit
+    @platforms = Platform.all.map{ |p| [p.name, p.id] }
   end
 
   def update
+    @game.platform_id = params[:platform_id]
     if @game.update(game_params)
       flash[:notice] = 'Game updated successfully!'
       redirect_to game_path(@game)
@@ -46,7 +50,7 @@ class GamesController < ApplicationController
   private
 
     def game_params
-      params.require(:game).permit(:title, :developer, :description)
+      params.require(:game).permit(:title, :developer, :description, :platform_id)
     end
 
     def find_game
