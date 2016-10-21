@@ -2,7 +2,12 @@ class GamesController < ApplicationController
   before_action :find_game, only: [:show, :edit, :update, :destroy]
 
   def index
-    @games = Game.all.order("created_at DESC")
+    if params[:platform].blank?
+      @games = Game.all.order("created_at DESC")
+    else
+      @platform_id = Platform.find_by(name: params[:platform]).id
+      @games = Game.where(platform_id: @platform_id).order("created_at DESC")
+    end
   end
 
   def show
