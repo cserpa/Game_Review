@@ -2,18 +2,25 @@ class GamesController < ApplicationController
   before_action :find_game, only: [:show, :edit, :update, :destroy]
 
   def index
-    @games = Game.all.order("created_at DESC")
+    if params[:platform].blank?
+      @games = Game.all.order("created_at DESC")
+    else
+      @platform_id = Platform.find_by(name: params[:platform]).id
+      @games = Game.where(platform_id: @platform_id).order("created_at DESC")
+    end
   end
 
   def show
   end
 
   def new
-    @game = Game.new
+    @game = current_user.games.build
+    @platforms = Platform.all.map{ |p| [p.name, p.id] }
   end
 
   def create
-    @game = Game.new(game_params)
+    @game = current_user.games.build(game_params)
+    @game.platform_id = params[:platform_id]
 
     if @game.save
       flash[:notice] = 'Game added successfully!'
@@ -25,9 +32,11 @@ class GamesController < ApplicationController
   end
 
   def edit
+    @platforms = Platform.all.map{ |p| [p.name, p.id] }
   end
 
   def update
+    @game.platform_id = params[:platform_id]
     if @game.update(game_params)
       flash[:notice] = 'Game updated successfully!'
       redirect_to game_path(@game)
@@ -46,7 +55,7 @@ class GamesController < ApplicationController
   private
 
     def game_params
-      params.require(:game).permit(:title, :developer, :description)
+      params.require(:game).permit(:title, :developer, :description, :platform_id)
     end
 
     def find_game

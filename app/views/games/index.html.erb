@@ -1,5 +1,9 @@
-<% @games.each do |game| %>
-  <h2><%= link_to game.title, game_path(game) %></h2>
-<% end %>
+<h2 class="current-platform"><%= params[:platform] %></h2>
 
-<%= link_to "Add Game", new_game_path %>
+<% if @games.count == 0 %>
+  <h2>There are no currently no games for <%= params[:platform] %>. Try adding your own!</h2>
+<% else %>
+  <% @games.each do |game| %>
+    <h2><%= link_to game.title, game_path(game) %></h2>
+  <% end %>
+<% end %>
