@@ -1,7 +1,19 @@
-<h2><%= @game.title %></h2>
-<h4>Developer: <%= @game.developer %></h4>
-<h4> Platform: <%= @game.platform.name %></h4>
-<p><%= @game.description %></p>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @game.game_img.url(:game_show), class: "game-show" %>
+  </div>
+  <div class="col-md-8">
+    <h2><%= @game.title %></h2>
+    <h4>Developer: <%= @game.developer %></h4>
+    <p><%= @game.description %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <!-- Reviews/ratings -->
+  </div>
+</div>
 
 <%= link_to "Back", root_path %>
 
