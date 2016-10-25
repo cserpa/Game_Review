@@ -14,11 +14,11 @@
           <%= link_to "VGReviews", root_path, class: "navbar-brand" %>
         </div>
         <ul class="nav navbar-nav">
-          <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li><%= link_to "SIGN UP", new_user_registration_path %></li>
           <% if user_signed_in? %>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "SIGN OUT", destroy_user_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "LOG IN", new_user_session_path %></li>
           <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
@@ -33,7 +33,7 @@
             </ul>
           </li>
           <% if user_signed_in? %>
-            <li><%= link_to "Add Game", new_game_path %></li>
+            <li><%= link_to "ADD GAME", new_game_path %></li>
           <% end %>
         </ul>
       </div>
@@ -41,6 +41,8 @@
     <% flash.each do |key, value| %>
       <p id="flash"><%=value%></p>
     <% end %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
