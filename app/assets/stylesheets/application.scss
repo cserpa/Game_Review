@@ -158,14 +158,14 @@ p.alert, p.notice {
 /* Game styles */
 
 .game {
-	height: 320px;
+	height: 330px;
 	width: 260px;
 	margin-bottom: 40px;
 	@include background-tile;
 }
 
 .game-show {
-	height: 425px;
+	height: 430px;
 	width: 335px;
 	@include background-tile;
 }
