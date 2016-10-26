@@ -3,32 +3,38 @@
     <%= image_tag @game.game_img.url(:game_show), class: "game-show" %>
   </div>
   <div class="col-md-8">
-    <h2><%= @game.title %></h2>
-    <h4><%= @game.developer %></h4>
-    <h3>Average Rating</h3>
-    <div class="average-review-rating" data-score=<%= @average_review %>></div>
-    <span>Based on <%= @game.reviews.count %> reviews</span>
-    <p><%= @game.description %></p>
+    <div class="game-info">
+      <h2 class="game-title"><%= @game.title %></h2>
+      <h4 class="game-developer"><%= @game.developer %></h4>
+      <h3 class="avg-rating">Average Rating</h3>
+      <div class="average-review-rating" data-score=<%= @average_review %>></div>
+      <span class="number-of-reviews">Based on <%= @game.reviews.count %> reviews</span>
+      <p class="game-description"><%= @game.description %></p>
+    </div>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-4">
-    <%= render @game.reviews %>
-    <div>
-      <%= link_to "Add Review", new_game_review_path(@game) %>
+    <div class="reviews">
+      <%= render @game.reviews %>
+      <div>
+        <%= link_to "Add Review", new_game_review_path(@game), class: "btn btn-custom" %>
+      </div>
     </div>
   </div>
 </div>
 
-<%= link_to "Back", root_path %>
+<div class="links btn-group">
+  <%= link_to "Back", root_path, class: "btn btn-custom" %>
 
-<% if user_signed_in? %>
-  <% if @game.user_id == current_user.id %>
-    <%= link_to "Edit", edit_game_path(@game) %>
-    <%= link_to "Delete", game_path(@game), method: :delete, data: { confirm: "Are you sure you want to delete #{@game.title}?" } %>
+  <% if user_signed_in? %>
+    <% if @game.user_id == current_user.id %>
+      <%= link_to "Edit", edit_game_path(@game), class: "btn btn-custom"%>
+      <%= link_to "Delete", game_path(@game), method: :delete, data: { confirm: "Are you sure you want to delete #{@game.title}?" }, class: "btn btn-custom" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <script>
   $('.review-rating').raty({
