@@ -4,7 +4,10 @@
   </div>
   <div class="col-md-8">
     <h2><%= @game.title %></h2>
-    <h4>Developer: <%= @game.developer %></h4>
+    <h4><%= @game.developer %></h4>
+    <h3>Average Rating</h3>
+    <div class="average-review-rating" data-score=<%= @average_review %>></div>
+    <span>Based on <%= @game.reviews.count %> reviews</span>
     <p><%= @game.description %></p>
   </div>
 </div>
@@ -29,6 +32,16 @@
 
 <script>
   $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
+
+<script>
+  $('.average-review-rating').raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
