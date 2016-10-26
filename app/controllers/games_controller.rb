@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :find_game, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     if params[:platform].blank?
@@ -11,6 +12,11 @@ class GamesController < ApplicationController
   end
 
   def show
+    if @game.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @game.reviews.average(:rating).round(2)
+    end
   end
 
   def new
