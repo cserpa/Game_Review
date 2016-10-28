@@ -1,24 +1,13 @@
 // @import "*";
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
+
  *= require_tree .
  *= require_self
  */
+
 @import url(http://fonts.googleapis.com/css?family=Lora|Ubuntu:300,400,500);
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
-/* Variables, mixins, etc.. */
 
 @mixin background-tile {
 	box-sizing: border-box;
@@ -27,9 +16,6 @@
 	box-shadow: 3px 3px 5px 6px #ccc;
 	padding: 1.5em 1.25em;
 }
-
-
-/* General styles */
 
 body {
 	background-color: #f5f5f5;
@@ -45,9 +31,6 @@ p.alert, p.notice {
 	margin: 0;
 }
 
-
-/* Navbar/navigation styles */
-
 .navbar {
 	font-family: 'Ubuntu', sans-serif;
 	text-transform: uppercase;
@@ -60,7 +43,7 @@ p.alert, p.notice {
 	.navbar-nav > li > a {
 		color: #222;
 		&:hover {
-			color: darken(#DFCE5A, 5%);
+			color: darken(#F0D643, 5%);
 			transition: 0.5s;
 		}
 	}
@@ -75,53 +58,50 @@ p.alert, p.notice {
 	}
 
 	.dropdown-menu > li > a:hover {
-		background-color: darken(#DFCE5A, 5%);
+		background-color: darken(#F0D643, 5%);
 		color: #fff;
 	}
 
 	.navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {
-		background-color: darken(#DFCE5A, 5%);
+		background-color: darken(#F0D643, 5%);
 		color: #fff;
 	}
 
 }
 
 .dropdown-menu > .active > a {
-	background-color: #DFCE5A;
+	background-color: #F0D643;
 	color: #fff;
 }
 
-
-/* Button/link styles */
-
 .btn-custom {
-	color: darken(#DFCE5A, 5%);
+	color: darken(#F0D643, 5%);
 	background-color: #fff;
-	border: 1px solid darken(#DFCE5A, 5%);
+	border: 1px solid darken(#F0D643, 5%);
 	padding: 8px 20px;
 	border-radius: 5px;
 	font-family: 'Ubuntu', sans-serif;
 	&:hover {
 		text-decoration: none;
-		background-color: darken(#DFCE5A, 5%);
+		background-color: darken(#F0D643, 5%);
 		color: #fff;
 		transition: 0.5s;
 	}
 }
 
 .btn-custom2 {
-	color: #DFCE5A;
+	color: #F0D643;
 	background-color: #fff;
-	border: 1px solid #DFCE5A;
+	border: 1px solid #F0D643;
 	padding: 8px 20px;
 	border-radius: 5px;
 	font-family: 'Ubuntu', sans-serif;
 	&:hover {
 		text-decoration: none;
-		background-color: #DFCE5A;
+		background-color: #F0D643;
 		color: #fff;
 		transition: 0.5s;
-    border: 1px solid #DFCE5A;
+    border: 1px solid #F0D643;
 	}
 }
 
@@ -154,8 +134,6 @@ p.alert, p.notice {
 	}
 
 }
-
-/* Game styles */
 
 .game {
 	height: 330px;
@@ -207,15 +185,9 @@ p.alert, p.notice {
 
 }
 
-
-/* current-platform styles */
-
 .current-platform {
 	margin-bottom: 40px;
 }
-
-
-/* Reviews styles */
 
 .reviews {
 
@@ -246,8 +218,6 @@ p.alert, p.notice {
 
 }
 
-/* New Game Form styles */
-
 .new-game-form {
 	@include background-tile;
 
@@ -264,9 +234,6 @@ p.alert, p.notice {
 	}
 
 }
-
-
-/* Edit Game Form styles */
 
 .edit-game-form {
 
@@ -286,8 +253,6 @@ p.alert, p.notice {
 
 }
 
-/* New/Edit review form styles */
-
 .new-review-form, .edit-review-form {
 	@include background-tile;
 
@@ -305,9 +270,6 @@ p.alert, p.notice {
 	}
 
 }
-
-
-/* Signup/Login form styles */
 
 .signup-form {
 	@include background-tile;
